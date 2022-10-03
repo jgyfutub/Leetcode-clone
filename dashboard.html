@@ -64,7 +64,7 @@
        
      </script>
      <!--pop up elements in mobile view-->
-<ul style="display:none;flex-direction:row;justify-content:space-evenly;list-style: none;width:100%;top:30px;position:absolute;background-color: azure;padding-top:10px;padding-bottom: 10px;opacity:1" id="pop_up">
+<ul style="display:none;flex-direction:row;justify-content:space-evenly;list-style: none;height:auto;width:100%;top:30px;position:absolute;background-color: azure;padding-top:10px;padding-bottom: 10px;opacity:1" id="pop_up">
     <li style="margin-left:10px;margin-left:20px;">Explore</li><hr/>
     <li style="margin-left:10px;margin-left:20px;">problems</li><hr/>
     <li style="margin-left:10px;margin-left:20px;">contest</li><hr/>
@@ -74,14 +74,16 @@
     <style>
         #pop_up{
         animation: example 0.5s linear;}
-        /*animate the pop up in mobile version by animating its opacity and position*/
+        /*animate the pop up in mobile version by animating its opacity,width and position*/
         @keyframes example {
             from{
                 opacity:0;
-                top:0px
+                top:0px;
+                width:0px
             }to{
                 opacity: 1;
                 top:30px;
+                width: 100%;
         }}
     </style>
 <script>
@@ -168,7 +170,7 @@
     <!--percentage and bar representation of each variety of problems solved by the user-->
     <div style="display:block;row-gap: 30px;margin-left: 10px;">
         <div style="display:flex;column-gap: 30px;" id="id2">
-<div style="display:block;background-color: whitesmoke;height:300px;padding-bottom: 50px;color:grey;border-radius: 20px;padding-left: 15px; width:100%;box-shadow: 5px 10px 8px 10px #888888;">
+<div style="display:block;background-color: whitesmoke;height:300px;padding-bottom: 50px;color:grey;border-radius: 20px;padding-left: 20px;padding-right: 50px;margin-right: 15px; ;box-shadow: 5px 10px 8px 10px #888888;">
     <p style="padding-top:20px">Solved Problems</p>
     <div style="display:flex;column-gap:calc(100%/8)">
         <p>Easy</p>
@@ -181,13 +183,13 @@
         <p style="color:black">89/1285</p>
         <p>Beats:84.0%</p>
     </div>
-    <progress value="89" max="1285" style="background:orange;border-radius:5px;height:2px;width:300px"></progress>
+    <progress value="89" max="1285" style="background-color:orange;border-radius:5px;height:2px;width:300px"></progress>
     <div style="display:flex;column-gap:calc(100%/8)">
         <p>Hard</p>
         <p style="color:black">25/530</p>
         <p>Beats:81.7%</p>
     </div>
-    <progress value="25" max="530" style="background:red;border-radius:5px;height:2px;width:300px"></progress>
+    <progress value="25" max="530" style="background-color:red;border-radius:5px;height:2px;width:300px"></progress>
 </div>
 <!--badges and reward to the user-->
 <div style="display:block;background-color: whitesmoke;height: 350px;color:grey;border-radius: 20px;padding-right: 50px;margin-right: 15px;box-shadow: 5px 10px 8px 10px #888888;">
