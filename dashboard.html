@@ -1,0 +1,325 @@
+<!--THE DASHBOARD PAGE-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <!--NOTE:to view the mobile view please refresh the page after reducing the page to mobile dimensions -->
+    <style>
+         body{
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            /**to remove default padding and margins**/
+            margin:0px;
+            padding:0px;
+            background-color: lightgrey;
+        }
+    </style>
+    <!--the navbar-->
+    <nav style="width:100%;top:0px;height:50px;background-color:#f1f8fa;display:flex;flex-direction:row;justify-content:space-between;position:initial;;" id="nav">
+        <ul style="display:flex;flex-direction:row;justify-content:space-evenly;list-style: none;" >
+            <li style="margin-left:10px;margin-left:20px;display:block"><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJsAAACoCAMAAADAUWy9AAABC1BMVEX///8AAAD/oRazs7Pk5OT//vz/wGH/+/X09PT/x3T8+/r/piL/2aAKBwH/zID6+vr/9+r39fBALxX/5sBtVjRLOBuioqLCwsLt7e28vLz/sDr/7dL/u1b/4rZbRib/rDAfFQaPeFbd08Khi2vGtZ0aEQUyIw0mGggiIiIrKyvZ2dkNDQ0ZGRl9fX3JyclZWVk+JwX/1JX/3q3s5tz/0Yv/8t//tUerl3j/w2vPwq2Bakfn4NRlTy5VNQfmkRNra2s+Pj5iYmKTk5NJSUmampqKiop7e3s2NjbjjxPQgxG5dA/SzMKraw6cYg2MWAx9TgprQwlbOQfSjSbHlUu7ll+3pYnIuaGvlGwsGwP/IJ4NAAAGyklEQVR4nM2ceV8bNxCGd22w8YnB4fCFgQAGmxAwjmMC4Qhtk6Zp0rQl4ft/kmopGHt3ZnTsaOX3f6+f30qaeaWdkefxa2H1dr/XO7has/DsmFo99B913XXNEtKV/6xe2jXNlG78SfVmaVyv/GkdLrgmGuuVH9Yr10hP+hBB8w9dMz1qNYrm+0euqR6UhtD8VddYgWo9kO1X11xCRzCa/4trMM/rImh+zTWZ1z1E0HznAW5uH0N77Rpt/QBD812n+4WPKJrrVbp4jaK5HtH8axTtdtEx2w2Kdu16jYZd0bM+rjtGi7qiJx24RgNc0aP25xyjga7oQYeuAxvsigL1XNs2xBX5M7CHwVyRkOu9H+qK3Htd3BU5t5O4K3Ke3wlX9JtjNMIVXTlGI1zRxqBVcYp2i6K9TwnVc62sK7YbFO049ajCqDXvAg13RXuXqWe1T5J/ebgr6kyiBS+vnDAd7oo2P6XCKhSTRMNd0W4UTWjYSAwNd0Wl3yE08epOEkKraaMJNRMJeH+UULTPKJpYsQmMK47mfyHQxLj2raPtomh/kmhCZbuR+HwTRfsqQxOTzmaoO+2gaN/kaCLJ2pt0S3so2l8qaGLStWyhLaNo39XQhAZW0PIrKNp7ZbRUKmNj0m2gaMdyognV37CjvUDR9i7lQJMqVJnR3qFo9wFaoZk7aTUa1WprkKlL6XjT6xaKJlxRO1edCqvZ4lACN2KcdC9RtN1PdSguNHI03JBt0r1F0Up/F5FM1KDfXZtp0t3h1uMffHDmTwokHYsd3sHR/iV/2GiTcLn4uf8Md0U/JT+t0OM6jGs4t3FX9FL643l6ScQ0nIQr2lL5fZGEi2U4CVf0Tu0JkklXNkfDXdEL1WdIJl3OEI1wRRvqT8mOSDizWEK4opW8zoNOyDlnslrzuCtaXtJ7VJUKwyZ28wJF29NE87w3hDlp66Phrqhzqv+0bAaH0x7ULRRt81wfTWiAsulGYMIVbRuheV4Lm3SabIQrOjNEwyed3pgSruiHMZqYdE0IraD1DMIV3cVAEyoDbFqZgXBFb+OheV4/Oul0plssVyRVJPfrZHvCeii5Ipkq05NO53CJSKKKrkim+bIhGrF/V3ZFUlWfbFNby4TsoGgXbGhCjUGmmSlXtXYzS6gF13NFNoSOqK4r4tcZhqbvitiFrdF7A1fELGwhdMxcEauQ12bsihh1DqPFcEV8gl14LFfEJjDHx3VFPIIDCEt+jy1wSFdcU/0v6Oxj131gC7RkPqIL63NMWodLbqHAW1JJVd21NKNqXaBYeQtgU3CT6zVOsge6aHUrdPwhj7pz3GSBInBAwirJ35oNtHQ6XLIMLFN5AGGdas8KN7EAWUE63ayMaKBQ1TKwYZZGkCNbbKHaYIBNulW2hZZOTwcSA7ZFe2zTMdiAbcEe2/RKBdaCbLec2HsziSHsOWGs6f8BYu+mjK1rCy3UXgDlLNkmxlJaiCSGLYBNGnwtBbhwV8YPgK0jY1u0krRqYZsEekvpHssG3FrUYEKefFnG5uXZ1wNkLsG9jMLh82L3iC2W1Na6oCsHT0M23R8gBcqDe2fW40pzwQeDs7F5Rk4GY3/vYBFcOVDacc0VCPkwORPHNXnkk8xMwGFfdGcBDntxfmkGFsQdwjYTcHjhhXu4U6sfT2MKHdVZgMNrVvjgsoY1tHm8eIsFLltsFoJi5aIJH/FRnCHx98ff69smDQNEMUFsuKkiDJMKLntwodpQk7o8okIkVkVBpGzVpFD1jHhz5nDRitqMyWNswEHFvkblx9ScM4MD65DNKkEpOJNSEbhE2rC+dxsviTaAQ6q3Tct7KTjdrSFWWG5cF71NZIgLrZoYtObdvIvhnIDb0Ci0wcvxY/Sm8MDhaENzNAF3Hx+OaGKI1zVDlOIrwhFo5h0CcrgVhVMmogrfKGMxwlFoDI28p4QTlsFZRiN7LOjCuHnraDTcdzxEUe0oXGg03BfM91NtPHxoAg4vre2kcpALq5SJZg9ONBLuc6oQocsOqDYUXjQKLuhfF/vN53lXKWbIPkVuNKK356kVu90clQflUVPWuMuPhsPp9WJbQUPhdFrYbaFhcEr3JdhG8+CzQ+rekATRILjOrKABX5boO02SRIvAKV6BkQha6GRTY5GOkrgC6+d4y19SuG7lSXENuKJaX48DsvtvGtdMJHVHkteopy7BO6Qwcd1DoKKs5MKGkJK5u2msFt0APqlkrwsLRFu0CYHW07YqIwW6THK3mIXoJO+ukOO/nUZd2T7ucZt9Z/chjvFauehmr57rO71IckLZanEwag7r9fqwmSkXq0xc/wEzpaBRxTcq8wAAAABJRU5ErkJggg==' style='height: 20px;width:20px;border-radius: 10px;'/></li>
+            </ul><ul style="display:flex;flex-direction:row;justify-content:space-evenly;list-style: none;column-gap:20px" id="lap_nav">
+                <!--elements to be shown in laptop view-->
+            <li style="margin-left:10px;margin-left:20px;">Explore</li>
+            <li style="margin-left:10px;margin-left:20px;">problems</li>
+            <li style="margin-left:10px;margin-left:20px;">contest</li>
+            <li style="margin-left:10px;margin-left:20px;">discuss</li>
+            <li style="margin-left:10px;margin-left:20px;">interview</li>
+            <li style="margin-left:10px;margin-left:20px;">store</li></ul>
+            <!--elements to be shown in mobile view-->
+            <ul style="display:flex;flex-direction:row;justify-content:space-evenly;margin-right:50px;list-style: none;padding-right: 20px;" id="phone_nav">
+                <li style="display:none;margin-right:30px;" ><button style="background-color:#f1f8fa;" id="button">☰</button></li>
+                <li style="margin-left:10px;margin-left:20px;background-color: #ddddc9;height:30px;padding-inline: 10px;border-radius: 5px; color:rgb(241, 207, 11)">Premium</li>
+                <li style="margin-left:10px;margin-left:20px;"><img src='data:image/png;base64,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' style='height: 20px;width:20px;border-radius: 10px;'/></li>
+                <li style="margin-left:10px;margin-left:20px;"><img src='data:image/jpeg;base64,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' style='height:20px;width:20px;border-radius: 10px;'/></li>
+            </ul>
+            
+    </nav>
+     <script>
+        let nav =document.getElementById('nav')
+        let nav_lap=document.getElementById("lap_nav");
+        let nav_phone=document.getElementById("phone_nav").firstElementChild
+        if (window.matchMedia("(max-width:800px").matches){
+            //hiding laptop elements
+            nav_lap.style.display="none";
+            //displaying moblie elements
+            nav_lap.firstElementChild.style.display='block'
+            nav_phone.style.display="block";      
+            //to stick navbar in mobile view
+            nav.style.position='fixed' 
+        }else{
+            //showing laptop elements 
+            nav_lap.style.display='flex';
+            //hiding moblie elements
+            nav_lap.firstElementChild.style.display='block'
+            nav_phone.style.display='none';
+            //to remove fixed in laptop
+            nav.style.position='initial'
+        }
+        
+       
+     </script>
+     <!--pop up elements in mobile view-->
+<ul style="display:none;flex-direction:row;justify-content:space-evenly;list-style: none;width:100%;top:30px;position:absolute;background-color: azure;padding-top:10px;padding-bottom: 10px;opacity:1" id="pop_up">
+    <li style="margin-left:10px;margin-left:20px;">Explore</li><hr/>
+    <li style="margin-left:10px;margin-left:20px;">problems</li><hr/>
+    <li style="margin-left:10px;margin-left:20px;">contest</li><hr/>
+    <li style="margin-left:10px;margin-left:20px;">discuss</li><hr/>
+    <li style="margin-left:10px;margin-left:20px;">interview</li><hr/>
+    <li style="margin-left:10px;margin-left:20px;">store</li></ul>
+    <style>
+        #pop_up{
+        animation: example 0.5s linear;}
+        /*animate the pop up in mobile version by animating its opacity and position*/
+        @keyframes example {
+            from{
+                opacity:0;
+                top:0px
+            }to{
+                opacity: 1;
+                top:30px;
+        }}
+    </style>
+<script>
+    let button=document.getElementById('button')
+    let pop_up=document.getElementById('pop_up')
+    let bool=true
+    button.addEventListener('click',function(){
+       bool=!bool
+    if (bool){
+        pop_up.style.display='none'
+    }
+    else{
+        pop_up.style.display='block'
+    }})
+</script>
+<!--information about the user-->
+<div style="display:flex;flex-direction:row;margin-top: 20px;border-radius: 2px;column-gap: 20px;justify-content:center;" id="id1">
+        <div style="display:block;justify-content: center;margin-left: 10px;background-color:whitesmoke;padding-left: 20px;padding-inline:50px;border-radius: 20px;margin-right: 15px;box-shadow: 5px 10px 8px 10px #888888;">
+        <div style="display:flex;column-gap:20px;">
+            <img src="https://th.bing.com/th/id/OIP.ZgwEAx_I1bylIJ7GrYM9sAHaHa?w=194&h=193&c=7&r=0&o=5&dpr=1.38&pid=1.7" style="height:100px;width:100px;margin-top:20px"/>
+            <div style="display:block;row-gap: 3px;">
+                <p style="font-size:medium;color:black;font-weight: 600;">Vedant Pandey</p>
+                <p style="font-size:small">testuser007</p>
+                <p style="font-size:medium;color:black;font-weight: 600;">Rank:303,252</p>
+            </div>
+        </div>
+        <button style=" width:100%;height:40px;border-radius:10px;border-width: 0px;">Edit Profile</button>
+        <div style="display:flex;justify-content:left;column-gap:3px">
+        <img src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAsJCQcJCQcJCQkJCwkJCQkJCQsJCwsMCwsLDA0QDBEODQ4MEhkSJRodJR0ZHxwpKRYlNzU2GioyPi0pMBk7IRP/2wBDAQcICAsJCxULCxUsHRkdLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCz/wAARCAERAMEDASIAAhEBAxEB/8QAHAABAAIDAQEBAAAAAAAAAAAAAAEHBQYIAwQC/8QARBAAAQQBAQUFBQUFBgQHAAAAAQACAwQFEQYSITFBBxMiUWEUFTJxgSNCUmJyQ4KRkqEWMzZTY3MXJCWxNHR1g6Kjsv/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwC20REBERARFi8znsJgK3tWUtMha4O7mMAvnncBruwxt8RPLXoNeJHNBlFi8rtBs9hGb+UyNasSNWxucXzvHmyGMGQj91U9tD2pZ3ImWvh2nGUzq3vWkOvSN5amQcG/u8R+Iqv5JZppJJZpHySyOLpJJHF73uPMuc7iSguPJ9r+NjL2YjFz2DxAmuyNgjBHURx7ziPmWrT73aftzcLu6tVqTHcCylWj5frn33/wcFpKIMhezefyfDIZS/abxIZYsSvjGvkwndH8Fj0RBLXOaQ5pIcORaSCPkQsnW2h2mptDauZykLByZHcsNZ/Jvbv9Fi0QbjS7Sdu6ZbvZBluNv7O7XhkB+b2Bsn/zW3YztghduMzGJcz8U+Nk3xr/ALE5B0/9wqoEQdPYfajZnOgDG5GCWUjU13kxWRoNT9jKA46dSAR6rNLkhrnNLXNJa5pDmlp0II4gghb1s/2mbSYgxwX3HKUhoC2y8i1G3/TsaEn5ODvogv1FhMBtPgNpITJjbOsrG709WYCO1AOA8cep4cuIJHqs2gIiICIiAiIgIiIChFV23/aA6i6xg8FNpdG9FkLsZ/8ACnk6CBw/adHO+7yHi4xBldsu0KhgO+x+N7u3mBq2TU71amevekHi/wDKPqRpo6j8hksllbU13I2ZbNqU6vklOp01JDWgeENHQAADyXyklxJJJJJJJ4kk9SoQEREBERAREQEREBERAREQe1W1bpTw2qk8sFiF2/FLC8skY7lqHN4q59je0qvkjDjc+6OvkHbrILYAjrWncg2QDwteenQ+h0DqSRB1wip/YDtBdG6vg89OTES2LH3pTxiPJsFhx+70a7pyPDiy4EBERAREQEULE7RZyps9iLuUsaOMTdyvEToZ7LwRHEPmeJ8gCeiDVe0TbM4Ot7qxsumXuRkySMPipV3cN8EcpHcd3yHHhw3qIJJJJ5niV9N+9cyVy3fuSmW1blfNM89XOPIDoByA6AAdF8yAiIgIiICIiAi+yji8vk3mPH0Ldt4IDhVgkl3dfxFgIH1WxQ9nG38wDvdPdtI1BmtU2H6tMu9/RBqKLcJezXb6IajGMlHXublMkfR0gK12/h83i3buRx1ypq7da6xBIxjj+R5G6foUHwoiICIiAiIgK6OzXbN15kez+Um3rkLP+mzyHxWIWDUwPJ++0cWnqB5t1fS69IJ5600FivI6KeCRk0MjDo+ORjg5rmnzBQdaItd2Q2ji2lw1e74W3IiK+QibwDLLWglzR+Fw8Tfnp91bCglFCIJVD9qG0JyeZ91V5NaWGL4X7p8Ml13CVx/RwYPIh34lcO0uXZgsHlsmSO8r1yK4PEOsyERxAjy3iNfQHyXMD3vke+SRznPe5z3ucSXOc46kknqUH5REQEREBEX6jjklfHFEx75JHtZGxjS573uOga1o4knog9alS5fs16dOCSezYeI4Yom7z3uPHgP6k9OfRXHsx2WY6oyK3tCW3LZAeKcbiKkJ1BAkc3RzyOvEN5jRw4rO7EbG1tmqTZ7DGPzNqNvtc3B3cMOjvZoSOg+8RzI8gNNxQeUEFatFHBWhihgjG7HFBG2ONjfJrGAAfwXqiIIX5kjimY+KVjJIngteyRocxzTzDmuGi/aIK62l7L8LkWS2cII8de4u7kA+wzHyLBqWfNo0/Lx1FL5HG5HE256OQryV7UJ0kjkA5dHNcNWlp6EEgrq1aztdsnQ2ooOjcGRZGBjzQtEcWP593IRxLHdfLmOWhDm1F726tqjZs07UTorFaV8M0b/iY9h0I4cF4ICIiAiIg2/s/wBoTgc9A2aTdx+SLKd3U6NaXH7KY9PATxPk4rolcjrpHYXNHObN42xI/etVQaFwk6uM0AAD3Hzc0tcfmUGzoiIKn7YMoWwYTDMd/evkyNlvI7rAYYfoSZP5R9KfW4dpF43drcq0O3o6TK9GL0EUYc8fzOetPQEREBERAVkdlOAbeydjNWGB1fFaMqhw1a+7IODvLwN1Pzc09FW66O7P8czHbKYRoaBJcidkZnDhvusnfaT8m7g+iDaVKIgIiIIUoiAoUogqLta2fYPY9o67NHOcylkt0fEd37GU/wACwn9KqRdP7U0GZPZ3aCk4amWhO+If60Le/iP8zQuYEBERAREQFZ3ZDlDDksriXu+zu1m24QTwE1Y6ODR5lriT+hVis9sfeOO2n2cta6NF+GCQnkI7J9neT9HFB0zqi+H3vi/85v8AREHMuasm7mM3bJ19pyN2cfKSZzgvgUklxJPMkk/MqEBERAREQF1NgWtZg9nmt+FuJxrW6eQrRgLlldM7G22XdltmZmnXdx0FZx1+/VHszv6tKDPoiICIiAihSgIiIPOYNMUwd8JjkDvlunVclrqnM2BTxGbtk6Ctjrs/HzZC9wC5WQEREBERAX6Y98b2SMOj2Oa9p8nNOoK/KIM9/afI+Z/mRYFEEuaWuc082uLT8wdFCy20lM0M/tBU00bDkrjYxpp9mZXOYdPkQsSgIiICIiArl7I802WnksFK/wC1qyG9UBPOCUhsrWj8rtD+/wCippZHC5a5g8nRydQ/a1ZQ4sJ0bLGfC+J/o4ag/P0QdTosdhsvj85jquSoyb0E7eLTp3kMg+OKUdHN5H+PI6nIoCIiAiIgIi+W/epY2nbv3Zmw1asTpZpHdGjgAB1JOgaOpIHVBpPanmmY/ADGRvHtWYkEWg+JtWFzZJXcPM7rf3j5Kh1m9p9oLW0mXtZKYFkR0hpwk69xWYTuM+fEud6k9OAwiAiIgIiICIvenWfct0qkf95aswVmfqleIx/3QeCK0P8Ah1L/AJKIMd2rY41NpW3QD3eUpwTF2mg76EezvaPo1hP6loCvftWxRu7Pw5BjdZcRZbI49RWsaQyaD592foVRCAiIgIiICIiDYtltrMpsvcM1f7anMWi5Te4tjmaPvNPHR46HT5gjgr9wO0mD2jrifG2Q6RrQZ60ujLVfXpJHqeHqNQfNcwL1r2bVSaKxVnmgsRO3o5YHujkYfNrmEFB1kionFdq21NJrI8hFWyUTdBvSjuLOgGmnexDd+pjJ9VtVfthwLmg28VkondRXdXnaPq90Z/ogsxFWs/bBs41pNbGZWR/QT+ywtP7zZHn+i1jKdrW0ltr48ZVq45juUh1tWW/J8gEf/wBaC38xnMNgarreTtMgj0d3TDxmncNPBDGPETy+WvEgcVQu2G2mR2pnbGGurYqu8uq1A7UudxHfWCOBf5dADoOZc/XLl6/kJ32r1qezYfoHS2JHSPIHIauPIdAvnQEREBERAREQFt3ZzjjkdrMUS3eiod7kpfTuB9mf5yxairn7IcSYaGWzMjfFcmbSrEjj3MHje5p8nOIH7iC0d70REQfPdqV79O7RsDWC5XmrTDruStLCRr148FyzkaNjGX7+PsDSenYlrSaci6NxbvD0PMfNdWql+1rB+z36WdhZ9lkGirbIHAWoW+BxP5mjQf7ZQVgiIgIiICIiAiIgIiICIiAiIgIiICIiAiIg9IYZrE0EELHSTTyMhiY34nyPcGtaPUkrqLB4uHC4jF4uLd0p1mRPc3gHynxyyafmcXH6ql+y7B+8s8cjMzWrhmCcajUOtyathbx8vE/5tHmr5QSiIgLDbTYWLaDCZLGODRJNFv1Xu/Z2o/HE7Xy14H0J81mEQclyxywySwyscyWJ745GOGjmPYS1zSPMFfhWJ2p7P+7svHmIGaVMvqZt0eFl1g8ev6xo71O95Ku0BERAREQEREBERAREQEREBERAREQERbn2dbP++8/DNMzeo4nu7tnUatfKHfYRH5uG8eHEMI6oLe2HwPuDZ+jWlZu3LI9uv6jRwnmAPdn9A3WnjzBPVbOoRBKKEQSiIgwu02Dh2hw1/GSbokkZ3lSR37K1Hxjf56a8HehK5lnhmrTT1543RzQSyQzRvGjmSRuLXNcPMEELrRUr2rbOey3YdoKsele+5sF4NHBltrfDIQOjwOPq09XIKxREQEREBERAREQEREBERAREQEREAAkgAEknQAcyfRdI7EbPf2dwNStKwC9a/wCcyB6iaQDSL9waN58wT95VX2Z7Oe98z7ysx60MO6ObxDwy3DxiZ+7oXu+QH3lfaAiIgIiICIiAvgy+MqZnG38ZbbrBchdE4gamN/xMkb6tIDh8l96IOU8pjreJyF7G227tinM6GTno7Ti17dejho4ehXxq6O1XZr2qpFtDUj1sUWNhyAaOMlUnwS6DqwnQ+h8mKl0BERAREQEREBERAREQEREBetevYt2K9WvG6WxYljggjZ8T5JHBrWjXzK8la/ZTsyZJZdpbcf2cPeVsWHD4pSC2Wcfp+FvqXfhQWRszg6+zuHo4yLddJG3vLcrRp31qTQyP89OjfQDyWZREBERAREQEREBERB+JY4po5YZWNkilY+ORjwC17Hgtc1wPQjgVzZths7Ls1mrNMBxpy62cfI7jv1nk6NcfxN+F3y1+8ullq23GzTNpcNLFE1vvGnvWcc46amTTxwkno8DTnzAPRBzgilzXMc5j2lrmktc1wIc0g6EEHjqoQEREBERAREQEREBERBldn8Jb2gy1HGVtQZn708umogrs4ySu+Q5eZIHVdNUaVTHU6dGpH3dapDHBCwdGMGg1PUnmT1J16rT+zrZb3Dihdtx7uUyjI5Zg8aPr1/ijg48QeO8/lxIB+BbygIiICIiAiIgIiICIiAiIgpPtR2W9itjaGlHpVvybmQawcIrh1Il0HSTr+YH8YCrNdXZChTydK5j7kfeVbcLoZm9d13ItPQg6EHoR6LmbaDCXNnsrcxlriYXb0EumjZ67+McrfmOfHgQR0QYpERAREQEREBERAW/dm2yvvrJe9Lke9jMXKx2jh4bFwaPZF5EN4Of9Bpo7hqGIxV3NZGljKbdZ7UoYCfhjYOL5H/laNSfkumcPiaWExtHGU26Q1YgzePxyvPF8r9PvOOpPz8hwDIIiICIiAiIgIiIIRSiCEUoghFKIIWmdoGyo2ixRnqxg5XHNfLU3R4rEXOSuSPPmz1GnDeK3REHI5BBII0IOhB5hFZPadsmcdcOfoxaUb8ul1jBwr3Hanf0H3ZOf6tfxAKtkBERAREQERb72b7Ke+8j7zuxb2LxkrTuvGrbNwaPZFpyLW8HP+g00dwDfOzbZT3Ljvel2LTJ5OJpDXt0fWpnR7YiDxDncHP8AoNNW8d+UoghFKIIRSiCEUoghFKICIiAiIgIiICKFKD5r9KnkqdujcjEtW1E+GZh6tcOYPQjmD0I16LmnaXAXNm8tax1jVzGnvakxGgsVnE7kg9ejvIgj1PT61bbXZaLafFPjja1uTqb82OldoPGdN6FxP3X6Ac+BAPTQhzgi/csUsMksMrHxyxPfHIx4LXsewlrmuB46g8CvwgIiAEkAcz5IMlhMPezuTp4ym3WWw/xPIJZDE3i+WT0aOPry5nQ9L4jF0cLjqWMpN3a9WMMaTpvyO5ukeR95x1J+f8NY7Ptk/wCzuN9quRgZfIsa+zqPFWh13mVwT16v9eHHcBW7ICIiAihSgIiICIiAiIgIiICIiAiIgIiICIiCpO1DZHUP2mx8XEbrctFGOY+FtoAfQSfQ+ZVRLrZ7I5GPjkY18cjXMkY9ocx7XDQtc08CD1XPu3WxljZy4+3Uje/C25Ca7xq72V7jr7PK70+4TzHqCg0tWd2Y7I+22GbRZCLWnUkIx0b28LFph0M3H7sZ5fm6+Ag6tsfsrc2oyLYgHx46uWvyFkD4Ga/3UZPDfdyHlz6aHo2tWrU69erVibFXrxshhjYNGsjYNA0IPZERAREQEREBERAREQEREEIiICIiAiIgIiICIiAte21/wrtP/wCnS/8AcIiDD9lv+E63/nb3/wCwt5REBERAREQEREBERAREQEREH//Z' style="height:10px;width:10px;margin-top: 23px;"/>
+        <p style="font-size:medium;">India</p></div>
+        <div style="display:flex;justify-content:left;column-gap: 3px;">
+            <img src="https://thumbs.dreamstime.com/b/graduate-hat-line-icon-education-vector-illustration-isolated-white-graduation-cap-outline-style-design-designed-web-133137313.jpg" style="height:20px;width:20px;margin-top: 20px;"/>
+        <p style="font-size:medium">MNNIT Allahabad</p></div>
+        <div style="display:flex;justify-content:left;column-gap:3px">
+        <img src="https://logos-download.com/wp-content/uploads/2016/09/GitHub_logo.png" style="height:20px;width:20px;margin-top:20px;"/>
+        <p style="font-size:medium"><a href='https://github.com/jgyfutub'>Vedant Pandey</a> </p></div>
+        <div style="display:flex;justify-content:left;column-gap:3px">
+            <img src="https://th.bing.com/th/id/OIP.0aQ3xtAsIQ2hLN0NlycBkQHaHa?w=182&h=181&c=7&r=0&o=5&dpr=1.38&pid=1.7" style="height:20px;width:20px;margin-top:20px"/>
+        <p style="font-size:medium"><a href='https://www.linkedin.com/in/vedant-pandey-062558238/'>Vedant Pandey</a></p></div><hr/>
+        <!--activites by the user-->
+        <h3>Community Stats</h3>
+        <div style="display:flex;justify-content:left;column-gap:3px">
+            <img src="https://th.bing.com/th/id/R.f979f861513ee902a4bd5e26e1229b77?rik=4Z3y03HjtZNIJA&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fdownload_562081.png&ehk=5wIs3OmRbPXbGnu41%2bcEZQsWHdB4g8lLpeO%2b2U6SBCU%3d&risl=&pid=ImgRaw&r=0"style="height:20px;width:25px;margin-top:20px"/>
+        <p style="font-size:medium;">Views 0</p></div>
+        <p style="font-size:small;color:grey;margin-left: 15px;">last week 0</p>
+        <div style="display:flex;justify-content:left;column-gap:3px">
+            <img src="https://static.vecteezy.com/system/resources/previews/000/376/755/original/tick-vector-icon.jpg" style="height:20px;width:20px;margin-top:20px"/>
+        <p style="font-size:medium">Solution 0</p></div>
+        <p style="font-size:small;color:grey;margin-left: 15px;">last week 0</p>
+        <div style="display:flex;justify-content:left;column-gap:3px">
+            <img src="https://th.bing.com/th/id/OIP.9zGqdUbxKWq31EQdDHCp_gHaHj?pid=ImgDet&rs=1" style="height:20px;width:20px;margin-top:20px"/>
+        <p style="font-size:medium">Discuss 0</p></div>
+        <p style="font-size:small;color:grey;margin-left: 15px;">last week 0</p>
+        <div style="display:flex;justify-content:left;column-gap:3px">
+            <img src="https://th.bing.com/th/id/R.51c4dba69fad377ae94eb6c190eb8ff9?rik=4quimhhhcM5jmw&riu=http%3a%2f%2ficons.iconarchive.com%2ficons%2fpaomedia%2fsmall-n-flat%2f512%2fstar-icon.png&ehk=03q3kkedmxcUhE9b3km4BtcUw8zCVfTWKmR5Y6HXOr4%3d&risl=&pid=ImgRaw&r=0" style="height:20px;width:20px;margin-top:20px"/>
+        <p style="font-size:medium">Reputation 0</p></div>
+        <p style="font-size:small;color:grey;margin-left: 15px;">last week 0</p><hr/>
+        <h3>Languages</h3>
+        <div style="display:flex;justify-content:space-between">
+            <p style="background-color:#c0c0c0;border-radius:5px">C++</p>
+            <p>138 problems solved</p>
+        </div><hr/>
+        <!--types of problems done by the user-->
+        <h3>Skills</h3>
+        <p style="font-size:medium">Intermediate</p>
+        <div style="display:flex;justify-content:space-evenly">
+            <p><span style="background-color:#c0c0c0;border-radius:5px">Hash Table</span>x19</p>
+            <p><span style="background-color:#c0c0c0;border-radius:5px">Binary Search</span>x18</p>
+        </div>
+        <p><span style="background-color:#c0c0c0;border-radius:5px;">Depth-First Search</span>x19</p>
+        <div style="display:flex;justify-content:center">
+            <p>Show more</p>
+        </div>
+        <p style="font-size:medium">Fundamental</p>
+        <div style="display:flex;justify-content:space-around;">
+            <p><span style="background-color:#c0c0c0;border-radius:5px">Array</span>x79</p>
+            <p><span style="background-color:#c0c0c0;border-radius:5px">String</span>x27</p>
+        </div>
+        <p><span style="background-color:#c0c0c0;border-radius:5px;">Two-Pointers</span>x22</p>
+        <div style="display:flex;justify-content:center">
+            <p>Show more</p>
+        </div>
+    </div>
+    <!--percentage and bar representation of each variety of problems solved by the user-->
+    <div style="display:block;row-gap: 30px;margin-left: 10px;">
+        <div style="display:flex;column-gap: 30px;" id="id2">
+<div style="display:block;background-color: whitesmoke;height:300px;padding-bottom: 50px;color:grey;border-radius: 20px;padding-left: 15px; width:100%;box-shadow: 5px 10px 8px 10px #888888;">
+    <p style="padding-top:20px">Solved Problems</p>
+    <div style="display:flex;column-gap:calc(100%/8)">
+        <p>Easy</p>
+        <p style="color:black">21/252</p>
+        <p>Beats52.8%</p>
+    </div>
+    <progress value="21" max="252" style="background-color:green;border-radius:5px;height:2px;width:300px"></progress>
+    <div style="display:flex;column-gap:calc(100%/8)">
+        <p>Medium</p>
+        <p style="color:black">89/1285</p>
+        <p>Beats:84.0%</p>
+    </div>
+    <progress value="89" max="1285" style="background:orange;border-radius:5px;height:2px;width:300px"></progress>
+    <div style="display:flex;column-gap:calc(100%/8)">
+        <p>Hard</p>
+        <p style="color:black">25/530</p>
+        <p>Beats:81.7%</p>
+    </div>
+    <progress value="25" max="530" style="background:red;border-radius:5px;height:2px;width:300px"></progress>
+</div>
+<!--badges and reward to the user-->
+<div style="display:block;background-color: whitesmoke;height: 350px;color:grey;border-radius: 20px;padding-right: 50px;margin-right: 15px;box-shadow: 5px 10px 8px 10px #888888;">
+  <p style="margin-left:30px;padding-top:20px"><span >Badge</span><br/><h3 style="margin-left:30px;color:black">0</h3></p>
+  <p style="margin-top:100px;margin-left: 30px;"><span>Locked Badge</span><br/><h3 style="margin-left:30px;color:black">Sep Leetcoding Challenge</h3></p>
+    </div>
+
+</div>
+<!--history of questions and problems solved by the user in past 3 months-->
+<div style="display:flex;flex-direction:row;justify-content: space-between;margin-top: 30px;background-color: whitesmoke;padding:20px;border-top-left-radius:20px;border-top-right-radius: 20px;margin-right: 15px;box-shadow: 5px 0px 8px 10px #888888;">
+    <div style="display:flex;flex-direction:row;">
+     <button style="padding: 13px;font-size: medium;background-color: whitesmoke;border-width: 0px;"id='rec'>Recent AC</button>
+     <button style="padding: 13px;font-size: medium;background-color: whitesmoke;border-width: 0px;" id="sol">Solutions</button>
+     <button style="padding: 13px;font-size: medium;background-color: whitesmoke;border-width: 0px;" id="dis">Discuss</button>
+     <style>
+        /**enabling hover for some buttons 
+        **/
+        #sol,#rec,#dis{
+            background-color: whitesmoke;
+        }
+        #sol:hover,#rec:hover,#dis:hover{
+            background-color: gray;
+        }
+    </style>
+     </div>
+     <button style="padding: 13px;font-size: medium;background-color: whitesmoke;color:gray;border-width: 0px;display: block;" id="hide">View all Submissions ></button>
+ </div>
+ <div style="display:block;background-color: whitesmoke;padding-inline: 20px;border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;margin-right:15px;box-shadow: 5px 10px 8px 10px #888888; padding-top:10px">
+    <div style="display:flex;justify-content: space-between;padding-inline:20px;background-color: #eae6e9;">
+        <p style="font-weight:bold">Best Time to Buy and sell a stock</p>
+        <p style="color:grey;display: block;" id="hide">a day ago</p>
+    </div>
+    <div style="display:flex;justify-content: space-between;padding-inline:20px">
+        <p style="font-weight:bold">The Number of Weak Characters in the Game</p>
+        <p style="color:grey;display: block;" id="hide">2 day ago</p>
+    </div>
+    <div style="display:flex;justify-content: space-between;padding-inline:20px;background-color: #eae6e9;">
+        <p style="font-weight:bold">Pacific Atlantic Water Flow</p>
+        <p style="color:grey;display: block;" id="hide">2 day ago</p>
+    </div>
+    <div style="display:flex;justify-content: space-between;padding-inline:20px">
+        <p style="font-weight:bold">Arranging Coins</p>
+        <p style="color:grey;display: block;" id="hide">a month ago</p>
+    </div>
+    <div style="display:flex;justify-content: space-between;padding-inline:20px;background-color: #eae6e9;">
+        <p style="font-weight:bold">Number of Dice Rolls With Target Sum</p>
+        <p style="color:grey;display: block;" id="hide">2 months ago</p>
+    </div>
+    <div style="display:flex;justify-content: space-between;padding-inline:20px">
+        <p style="font-weight:bold">Clone Graph</p>
+        <p style="color:grey;display: block;" id="hide">2 months ago</p>
+    </div>
+    <div style="display:flex;justify-content: space-between;padding-inline:20px;background-color: #eae6e9;">
+        <p style="font-weight:bold">Course Schdule ||</p>
+        <p style="color:grey;display: block;" id="hide">2 months ago</p>
+    </div>
+    <div style="display:flex;justify-content: space-between;padding-inline:20px">
+        <p style="font-weight:bold">Number of Dice Rolls With Target Sum</p>
+        <p style="color:grey;display: block;" id="hide">2 months ago</p>
+    </div>
+    <div style="display:flex;justify-content: space-between;padding-inline:20px;background-color: #eae6e9;">
+        <p style="font-weight:bold">Max Area of Island</p>
+        <p style="color:grey;display: block;" id="hide">3 months ago</p>
+    </div>
+    <div style="display:flex;justify-content: space-between;padding-inline:20px">
+        <p style="font-weight:bold">Binary Tree Cameras</p>
+        <p style="color:grey;display: block;" id="hide">3 months ago</p>
+    </div>
+    <div style="display:flex;justify-content: space-between;padding-inline:20px;background-color: #eae6e9;">
+        <p style="font-weight:bold">Minimum Path Sum</p>
+        <p style="color:grey;display: block;" id="hide">3 months ago</p>
+    </div>
+    <div style="display:flex;justify-content: space-between;padding-inline:20px">
+        <p style="font-weight:bold">Next Permutation</p>
+        <p style="color:grey;display: block;" id="hide">3 months ago</p>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+
+let id1=document.getElementById('id1')
+let id2=document.getElementById('id2')
+let hide=document.getElementById('hide')
+if(window.innerWidth<1000){
+    //enabling block view for mobile view
+    id1.style.display='block'
+    id2.style.display='block'
+    hide.style.display='none'
+    //increase the padding of cards from navbar for mobile view
+    id1.style.marginTop='70px'
+}
+else{
+    //enabling flex view for laptop view
+    hide.style.display='block'
+    id1.style.display='flex'
+    id2.style.display='flex'
+     //decrease the padding of cards from navbar for mobile view
+    id1.style.marginTop='20px'
+}
+
+</script>
+<div style="height:50px;color:lightgray"></div>
+<!-- footer view of the page-->
+<div style="display:flex;justify-content:center" >
+<div style="display:block;background-color: white;width:calc(100%/1.1);border-radius: 10px;">
+<p style="margin-left:50px;color:gray">CopyRight @2022 LeetCode</p>
+<div style=" margin-left:50px;display: flex;flex-wrap: wrap;column-gap: 50px;">
+    <p>Help Center</p>
+    <p>Jobs</p>
+    <p>Bug Bounty</p>
+    <p>Assesment</p>
+    <p>Students</p>
+    <p>Terms</p>
+    <p>Privacy Policy</p>
+</div></div></div>
+<!--buttons to be shown only in mobile view-->
+    <button id="mob_b1" style="position:fixed;display:block;bottom:70px;right:10px;padding:5px;background-color: white;"><img src='https://th.bing.com/th/id/R.275715d17c8c2e4d5933fb27f8c6b723?rik=897DLoMZvJZM4Q&riu=http%3a%2f%2fwww.newdesignfile.com%2fpostpic%2f2014%2f12%2fsync-icon_234174.png&ehk=3NgzdAySflV9IZxMTUgvtyfkkCdrAz5sPvWA5hjVVo8%3d&risl=&pid=ImgRaw&r=0'style='height:25px;width:25px'/> </button>
+    <button id='mob_b2'style="position:fixed;display:block;bottom:10px;right:10px;padding:5px;background-color: white;"><img src='https://th.bing.com/th/id/OIP.B931gGoXu-yhpk-54Yp-SgHaHa?w=174&h=180&c=7&r=0&o=5&dpr=1.38&pid=1.7' style='height:25px;width:25px'/></button>
+<script>
+ let mob_b1=document.getElementById('mob_b1');
+ let mob_b2=document.getElementById('mob_b2')
+ if(window.matchMedia('(min-width:800px)').matches){
+    mob_b1.style.display='none'
+    mob_b2.style.display='none'
+ }
+ else{
+    mob_b1.style.display='block'
+    mob_b2.style.display='block'
+ }
+</script>
+</body>
+</html>
